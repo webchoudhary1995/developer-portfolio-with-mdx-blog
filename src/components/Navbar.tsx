@@ -2,22 +2,25 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronRight } from "lucide-react";
 import { personalInfo } from "@/lib/data";
 
+// Use absolute paths for anchor links to work from any page
 const navLinks = [
-  { name: "Home", href: "#about" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-  { name: "Skills", href: "#skills" },
+  { name: "Home", href: "/#about" },
+  { name: "Experience", href: "/#experience" },
+  { name: "Projects", href: "/#projects" },
+  { name: "Skills", href: "/#skills" },
   { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "#contact" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,10 +30,7 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleDownloadResume = () => {
-    console.log("Downloading resume...");
-    alert("Resume download initiated! (This is a demo)");
-  };
+  const isBlogPage = pathname?.startsWith("/blog");
 
   return (
     <>
@@ -64,7 +64,13 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="relative text-sm text-slate-300 hover:text-white transition-colors group"
+                  className={`relative text-sm transition-colors group ${
+                    isBlogPage && link.href.startsWith("/#")
+                      ? "text-slate-300 hover:text-white"
+                      : link.href === pathname
+                      ? "text-emerald-400"
+                      : "text-slate-300 hover:text-white"
+                  }`}
                 >
                   {link.name}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-emerald-400 to-cyan-400 transition-all duration-300 group-hover:w-full" />
@@ -75,7 +81,13 @@ export default function Navbar() {
             {/* CTA Button */}
             <div className="hidden md:block">
               <button
-                onClick={() => document.getElementById("contact")?.scrollIntoView()}
+                onClick={() => {
+                  if (isBlogPage) {
+                    window.location.href = "/#contact";
+                  } else {
+                    document.getElementById("contact")?.scrollIntoView();
+                  }
+                }}
                 className="relative px-5 py-2.5 text-sm font-medium text-white rounded-lg overflow-hidden group"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-cyan-500 opacity-80 group-hover:opacity-100 transition-opacity" />
@@ -145,7 +157,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: navLinks.length * 0.1 }}
                   onClick={() => {
-                    document.getElementById("contact")?.scrollIntoView();
+                    window.location.href = "/#contact";
                     setIsMobileMenuOpen(false);
                   }}
                   className="mt-4 w-full py-3 text-center font-medium text-white bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-lg"
