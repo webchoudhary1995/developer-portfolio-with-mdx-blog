@@ -2,6 +2,7 @@ self.__SERVER_FILES_MANIFEST={
   "version": 1,
   "config": {
     "env": {},
+    "webpack": null,
     "typescript": {
       "ignoreBuildErrors": false
     },
@@ -14,12 +15,10 @@ self.__SERVER_FILES_MANIFEST={
     "useFileSystemPublicRoutes": true,
     "generateEtags": true,
     "pageExtensions": [
-      "js",
-      "jsx",
-      "md",
-      "mdx",
+      "tsx",
       "ts",
-      "tsx"
+      "jsx",
+      "js"
     ],
     "instrumentationClientInject": [],
     "poweredByHeader": true,
@@ -86,7 +85,7 @@ self.__SERVER_FILES_MANIFEST={
     "productionBrowserSourceMaps": false,
     "excludeDefaultMomentLocales": true,
     "reactProductionProfiling": false,
-    "reactStrictMode": null,
+    "reactStrictMode": true,
     "reactMaxHeadersLength": 6000,
     "httpAgentOptions": {
       "keepAlive": true
@@ -321,31 +320,10 @@ self.__SERVER_FILES_MANIFEST={
     "htmlLimitedBots": "[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight",
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.mjs",
+    "repoRoot": "F:\\developer-portfolio-with-mdx-blog",
     "turbopack": {
-      "rules": {
-        "#next-mdx": {
-          "loaders": [
-            {
-              "loader": "F:\\developer-portfolio-with-mdx-blog\\node_modules\\@next\\mdx\\mdx-js-loader.js",
-              "options": {
-                "providerImportSource": "next-mdx-import-source-file"
-              }
-            }
-          ],
-          "as": "*.tsx"
-        }
-      },
-      "conditions": {
-        "#next-mdx": {
-          "path": {}
-        }
-      },
-      "resolveAlias": {
-        "next-mdx-import-source-file": "@vercel/turbopack-next/mdx-import-source"
-      },
       "root": "F:\\developer-portfolio-with-mdx-blog"
     },
-    "repoRoot": "F:\\developer-portfolio-with-mdx-blog",
     "distDirRoot": ".next"
   },
   "appDir": "F:\\developer-portfolio-with-mdx-blog",
