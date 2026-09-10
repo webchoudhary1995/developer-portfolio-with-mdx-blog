@@ -1,0 +1,58 @@
+[
+  {
+    "route": "/",
+    "firstLoadUncompressedJsBytes": 620958,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\40qwk1m2-768z.js",
+      ".next\\static\\chunks\\3gw040u1wp9ci.js",
+      ".next\\static\\chunks\\1thy34-rff0wj.js",
+      ".next\\static\\chunks\\1djza73nxu3tl.js",
+      ".next\\static\\chunks\\310vm2bl3xxpt.js",
+      ".next\\static\\chunks\\19mx3mg6lkumu.js",
+      ".next\\static\\chunks\\1mh6a-0e61pyc.js",
+      ".next\\static\\chunks\\2-rtuqsgzmno4.js",
+      ".next\\static\\chunks\\turbopack-30koqklv8_-oi.js"
+    ]
+  },
+  {
+    "route": "/blog/[slug]",
+    "firstLoadUncompressedJsBytes": 594883,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\40qwk1m2-768z.js",
+      ".next\\static\\chunks\\3gw040u1wp9ci.js",
+      ".next\\static\\chunks\\0nmw_1dnhapq3.js",
+      ".next\\static\\chunks\\310vm2bl3xxpt.js",
+      ".next\\static\\chunks\\19mx3mg6lkumu.js",
+      ".next\\static\\chunks\\1mh6a-0e61pyc.js",
+      ".next\\static\\chunks\\2-rtuqsgzmno4.js",
+      ".next\\static\\chunks\\turbopack-30koqklv8_-oi.js"
+    ]
+  },
+  {
+    "route": "/blog",
+    "firstLoadUncompressedJsBytes": 591748,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\40qwk1m2-768z.js",
+      ".next\\static\\chunks\\3gw040u1wp9ci.js",
+      ".next\\static\\chunks\\3r73-c1_9lsnj.js",
+      ".next\\static\\chunks\\310vm2bl3xxpt.js",
+      ".next\\static\\chunks\\19mx3mg6lkumu.js",
+      ".next\\static\\chunks\\1mh6a-0e61pyc.js",
+      ".next\\static\\chunks\\2-rtuqsgzmno4.js",
+      ".next\\static\\chunks\\turbopack-30koqklv8_-oi.js"
+    ]
+  },
+  {
+    "route": "/_not-found",
+    "firstLoadUncompressedJsBytes": 585702,
+    "firstLoadChunkPaths": [
+      ".next\\static\\chunks\\40qwk1m2-768z.js",
+      ".next\\static\\chunks\\3gw040u1wp9ci.js",
+      ".next\\static\\chunks\\310vm2bl3xxpt.js",
+      ".next\\static\\chunks\\19mx3mg6lkumu.js",
+      ".next\\static\\chunks\\1mh6a-0e61pyc.js",
+      ".next\\static\\chunks\\2-rtuqsgzmno4.js",
+      ".next\\static\\chunks\\turbopack-30koqklv8_-oi.js"
+    ]
+  }
+]
