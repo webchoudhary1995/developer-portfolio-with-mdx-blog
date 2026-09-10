@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { Clock, ArrowLeft, Search } from "lucide-react";
+import { Clock, Search } from "lucide-react";
 
 interface BlogPost {
   slug: string;
@@ -46,7 +47,18 @@ const allPosts: BlogPost[] = [
 
 const categories = ["All", "Next.js", "AI/ML", "CSS"];
 
+const navLinks = [
+  { name: "Home", href: "/#about" },
+  { name: "Experience", href: "/#experience" },
+  { name: "Projects", href: "/#projects" },
+  { name: "Skills", href: "/#skills" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/#contact" },
+];
+
 export default function BlogPage() {
+  const pathname = usePathname();
+
   return (
     <div className="min-h-screen pt-24 pb-16">
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
@@ -55,12 +67,24 @@ export default function BlogPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="mb-12">
-          <Link href="/" className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-6">
-            <ArrowLeft size={18} />
-            Back to Home
-          </Link>
+        {/* Navigation for Blog Page */}
+        <div className="flex flex-wrap items-center gap-6 mb-8 pb-6 border-b border-slate-800">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={`text-sm transition-colors ${
+                link.href === pathname || (link.href === "/blog" && pathname === "/blog")
+                  ? "text-emerald-400 font-medium"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
 
+        <div className="mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
             Blog <span className="gradient-text">Articles</span>
           </h1>
@@ -133,7 +157,9 @@ export default function BlogPage() {
 
                 <Link href={`/blog/${post.slug}`} className="inline-flex items-center gap-2 text-sm font-medium text-emerald-400 hover:text-emerald-300 transition-colors">
                   Read Article
-                  <ArrowLeft size={16} className="rotate-180" />
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
                 </Link>
               </div>
             </motion.article>

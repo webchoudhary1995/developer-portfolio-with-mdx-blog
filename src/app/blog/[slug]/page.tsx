@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
-import { ArrowLeft, Clock, Calendar, Share2, Tag } from "lucide-react";
+import { Clock, Calendar, Share2, Tag } from "lucide-react";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -16,7 +17,6 @@ const blogPosts: Record<string, {
   readingTime: string;
   category: string;
   image?: string;
-  content: string;
 }> = {
   "getting-started-with-nextjs-15": {
     slug: "getting-started-with-nextjs-15",
@@ -26,7 +26,6 @@ const blogPosts: Record<string, {
     readingTime: "5 min read",
     category: "Next.js",
     image: "https://images.unsplash.com/photo-1618761714954-0b8cd0026356?w=800&h=400&fit=crop",
-    content: "",
   },
   "building-ai-applications": {
     slug: "building-ai-applications",
@@ -36,7 +35,6 @@ const blogPosts: Record<string, {
     readingTime: "8 min read",
     category: "AI/ML",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop",
-    content: "",
   },
   "modern-css-techniques": {
     slug: "modern-css-techniques",
@@ -46,11 +44,20 @@ const blogPosts: Record<string, {
     readingTime: "6 min read",
     category: "CSS",
     image: "https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?w=800&h=400&fit=crop",
-    content: "",
   },
 };
 
+const navLinks = [
+  { name: "Home", href: "/#about" },
+  { name: "Experience", href: "/#experience" },
+  { name: "Projects", href: "/#projects" },
+  { name: "Skills", href: "/#skills" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/#contact" },
+];
+
 export default function BlogPostPage({ params }: PageProps) {
+  const pathname = usePathname();
   const slug = "getting-started-with-nextjs-15";
   const post = blogPosts[slug] || blogPosts["getting-started-with-nextjs-15"];
 
@@ -75,11 +82,30 @@ export default function BlogPostPage({ params }: PageProps) {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Navigation for Blog Post Page */}
+        <div className="flex flex-wrap items-center gap-6 mb-8 pb-6 border-b border-slate-800">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className={`text-sm transition-colors ${
+                link.href === pathname || (link.href === "/blog" && pathname?.includes("/blog"))
+                  ? "text-emerald-400 font-medium"
+                  : "text-slate-400 hover:text-white"
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+
         <Link
           href="/blog"
           className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-8"
         >
-          <ArrowLeft size={18} />
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
           Back to Blog
         </Link>
 
